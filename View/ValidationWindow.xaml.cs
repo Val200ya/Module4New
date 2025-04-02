@@ -64,6 +64,17 @@ namespace Module4.View
                     WarningFullNameTextBlock.Text = "Данные ФИО успешно прошли валидацию.";
                 }
 
+                string result = "";
+
+                if (WarningFullNameTextBlock.Text.Equals("Данные ФИО не валидны. Попробуйте ещё раз."))
+                {
+                    result = "Не успешно";
+                }
+                else if (WarningFullNameTextBlock.Text.Equals("Данные ФИО успешно прошли валидацию."))
+                {
+                    result = "Успешно";
+                }
+
                 string filePath = "C:\\Users\\admin\\source\\repos\\Module4\\ТестКейс.docx";
                 int tableIndex = 1;
                 int columnIndex = 3;
@@ -72,12 +83,12 @@ namespace Module4.View
 
                 WordWriter wordWriter = new WordWriter();
 
-                if (!data.Equals(""))
+                if (!result.Equals(""))
                 {
                     rowIndex++;
                 }
 
-                wordWriter.SaveToWord(filePath, tableIndex, columnIndex, rowIndex, data);
+                wordWriter.SaveToWord(filePath, tableIndex, columnIndex, rowIndex, result);
             }
         }
     }
